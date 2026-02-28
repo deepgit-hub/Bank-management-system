@@ -47,6 +47,31 @@ class SavingAccount
 }
 class CurrentAccount
 {
+    void deposit()
+    {
+        
+        System.out.print("How Much you have to deposit");
+        int deposit = scan.nextInt();
+        balance+=deposit;
+        System.out.print("Balance After Deposit "+balance);
+    }
+    void withdraw()
+    {
+        System.out.print("Enter amount to withdraw : ");
+        int amount = scan.nextInt();
+        if(amount<=balance)
+        {
+            balance-=amount;
+            System.out.print("Balance After Withdraw "+balance);
+        }
+        else{
+            System.out.print("Insufficient Balance!!!");
+        }
+    }
+    void checkbalance()
+    {
+        System.out.print("Your Account balance is : "+balance);
+    }
 
 }
 class Practice
@@ -75,6 +100,22 @@ class Practice
                 switch(choice)
                 {
                     case 1:
+                        s.deposit();
+                        break;
+                    case 2:
+                        s.withdraw();
+                        break;
+                    case 3:
+                        s.checkbalance();
+                        break;
+                    case 4:
+                        s.displaydetails();
+                        break;
+                    case 5:
+                        run=false;
+                    default:
+                        System.out.print("Invalid Choice is Entered!!!");                    
+
                         
                 }
             }
