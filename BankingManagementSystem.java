@@ -19,10 +19,30 @@ class SavingAccount
 {
     void deposit()
     {
+        double intrest;
         System.out.print("How Much you have to deposit");
         int deposit = scan.nextInt();
-        balance +=deposit;
+        balance+=deposit;
+        intrest = (balance*2)/100;
+        balance = balance+intrest;
         System.out.print("Balance After Deposit "+balance);
+    }
+    void withdraw()
+    {
+        System.out.print("Enter amount to withdraw : ");
+        int amount = scan.nextInt();
+        if(amount<=balance)
+        {
+            balance-=amount;
+            System.out.print("Balance After Withdraw "+balance);
+        }
+        else{
+            System.out.print("Insufficient Balance!!!");
+        }
+    }
+    void checkbalance()
+    {
+        System.out.print("Your Account balance is : "+balance);
     }
 }
 class CurrentAccount
