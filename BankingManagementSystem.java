@@ -1,13 +1,17 @@
 import java.lang.System;
 import java.util.Scanner;
-class Account()
+class Account
 {
-    void getdetails()
+    String name;
+    int accountnumber;
+    double balance;
+    void getdetails(Scanner scan)
     {
         System.out.print("Enter Your Name : ");
-        String name=scan.nextString();
+        name=scan.nextLine();
         System.out.print("Enter Your Account Number : ");
-        int accountnumber=scan.nextInt();
+        accountnumber=scan.nextInt();
+        balance =0;
     }
     void displaydetails()
     {
@@ -15,9 +19,9 @@ class Account()
         System.out.println("Account Number : "+accountnumber);
     }
 }
-class SavingAccount
+class SavingAccount extends Account
 {
-    void deposit()
+    void deposit(Scanner scan)
     {
         double intrest;
         System.out.print("How Much you have to deposit");
@@ -27,7 +31,7 @@ class SavingAccount
         balance = balance+intrest;
         System.out.print("Balance After Deposit "+balance);
     }
-    void withdraw()
+    void withdraw(Scanner scan)
     {
         System.out.print("Enter amount to withdraw : ");
         int amount = scan.nextInt();
@@ -45,9 +49,9 @@ class SavingAccount
         System.out.print("Your Account balance is : "+balance);
     }
 }
-class CurrentAccount
+class CurrentAccount extends Account
 {
-    void deposit()
+    void deposit(Scanner scan)
     {
         
         System.out.print("How Much you have to deposit");
@@ -55,7 +59,7 @@ class CurrentAccount
         balance+=deposit;
         System.out.print("Balance After Deposit "+balance);
     }
-    void withdraw()
+    void withdraw(Scanner scan)
     {
         System.out.print("Enter amount to withdraw : ");
         int amount = scan.nextInt();
@@ -90,6 +94,7 @@ class Practice
             boolean run =true;
             while(run)
             {
+                s.getdetails(scan);
                 System.out.println("1. Deposit");
                 System.out.println("2. Withdraw");
                 System.out.println("3. Check Balance");
@@ -100,10 +105,10 @@ class Practice
                 switch(choice)
                 {
                     case 1:
-                        s.deposit();
+                        s.deposit(scan);
                         break;
                     case 2:
-                        s.withdraw();
+                        s.withdraw(scan);
                         break;
                     case 3:
                         s.checkbalance();
@@ -113,6 +118,7 @@ class Practice
                         break;
                     case 5:
                         run=false;
+                        break;
                     default:
                         System.out.print("Invalid Choice is Entered!!!");                    
 
@@ -125,6 +131,40 @@ class Practice
         }
         else if(type==2)
         {
+            boolean run =true;
+            while(run)
+            {
+                c.getdetails(scan);
+                System.out.println("1. Deposit");
+                System.out.println("2. Withdraw");
+                System.out.println("3. Check Balance");
+                System.out.println("4. Display Details");
+                System.out.println("5. Exit");
+                System.out.print("Enter your choice (1-5): ");
+                int choice=scan.nextInt();
+                switch(choice)
+                {
+                    case 1:
+                        c.deposit(scan);
+                        break;
+                    case 2:
+                        c.withdraw(scan);
+                        break;
+                    case 3:
+                        c.checkbalance();
+                        break;
+                    case 4:
+                        c.displaydetails();
+                        break;
+                    case 5:
+                        run=false;
+                        break;
+                    default:
+                        System.out.print("Invalid Choice is Entered!!!");                    
+
+                        
+                }
+            }
             //current account
         }
         else
